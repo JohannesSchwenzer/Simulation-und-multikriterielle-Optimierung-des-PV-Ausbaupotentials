@@ -7,4 +7,4 @@ Die einzelnen Parameter sind erklärt und können angepasst werden.
 
 Für die reine Batterieauslegung kann die "zeitoptimierte_Simulation" verwendet werden.
 
-Fragen an:  s0536729@HTW-Berlin.de oder Johannes.Schwenzer@siamese-pixel.de
+Fragen an:  johannes.m.schwenzer@gmail.com oder Johannes.Schwenzer@siamese-pixel.de
