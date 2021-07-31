@@ -140,18 +140,26 @@ kumuliertem Netzbezug im Quartier für jeweils 3 Tage im April und November. Die
 linke Grafik zeigt den Zeitraum vom 21.–23. April, die rechte Grafik den Zeitraum vom
 21.–23. November.*
 
-## Anwendung
-Zur Simulation verschiedener PV-Ausbaukapazitäten und Speichergrößen, sowie zur Berechnung der Optimalsystemauslegung
-kann das Skript "Simulation_und_Optimierung" genutzt werden. Die notwendigen Daten und Pfade sind mitgeliefert 
-und können individuell angepasst werden. Als Umgebung ist jede Python 3 fähige Programmierumgebung geeignet.
-Die einzelnen Parameter sind erklärt und können angepasst werden.
+## Datenstruktur
+Die Simulation benötigt für jeden Haushalt die Dachflächen [m²] und die Ausrichtung der respektiven Dachflächen, sowie ein zeitlich aufgelöstes Lastprofil [kWh] und
+Strahlungsdaten [W/m²] in derselben zeitlichen Auflösung (ist das Lastprofil stündlich müssen auch die Strahlungsdaten stündlich sein). Beim Nutzen von Wetterdaten die nur Horizontale Direktstrahlung und Diffusstrahlung beinhalten muss die geneigte Globalstrahlung zusätzlich berechnet werden. Eine gute Methode liefert [[Klucher, Thomas M.]](#klucher) .
+(Ein Skript zur Umrechnung von Strahlung auf horizontaler zu geneigter Ebene kann ich auf Wunsch bereitstellen.)
+Zur Erstellung von zeitlich aufgelösten Lastprofilen ist der [Load Profile Generator](#https://www.loadprofilegenerator.de/) zu empfehlen.
+Je nach Optimierungskriterium werden weitere Zeitreihen benötigt, für CO²-Reduktion die spezifische CO² Emmission des deutschen Strommix [kg/kWh], für die Berechnung des Grid Support Coefficient nach [[Klein et al.]](#klein) die Börsentstrompreise [€/MWh] und zur Abschätzung des Konfliktpotentials mit Windenergie die Einsman Einsätze mit netzengpassbedingter Abregelung. 
 
-Für die reine Batterieauslegung kann die "zeitoptimierte_Simulation" verwendet werden.
+Zur Simulation des Stadtquartiers sind anonymisierte Datensätze in den bereitgestellten *csv* Datensätzen vorhanden, sodass die Simulation innerhalb des Repository Out-of-the-box funktionieren sollte. (Pfade müssen angepasst werden)
 
-Fragen an:  johannes.m.schwenzer@gmail.com oder Johannes.Schwenzer@siamese-pixel.de
+Für die reine Batterieauslegung kann die *zeitoptimierte_Simulation.py* verwendet werden.
+
+## Kontakt
+johannes.m.schwenzer@gmail.com 
 
 
 
 ## References
 <a name="abcde"> 
 [Behzadian et al.]  Behzadian, Majid, et al. "A state-of the-art survey of TOPSIS applications." Expert Systems with applications 39.17 (2012): 13051-13069. </a>
+<a name="klucher"> 
+[Klucher, Thomas M.] Klucher, Thomas M. "Evaluation of models to predict insolation on tilted surfaces." Solar energy 23.2 (1979): 111-114. </a>
+<a name="klein"> 
+[Klein et al.]Klein, Konstantin, et al. "Grid support coefficients for electricity-based heating and cooling and field data analysis of present-day installations in Germany." Applied Energy 162 (2016): 853-867. </a>
