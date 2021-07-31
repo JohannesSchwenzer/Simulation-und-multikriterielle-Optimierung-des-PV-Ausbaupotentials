@@ -42,6 +42,7 @@ der Optimierungskriterien abzubilden.
 Aus der in Formel 3.2 errechneten normalisierten, gewichteten Entscheidungsmatrix
 V wird über Formel 3.3 die Ideallösung berechnet.
 
+
 ![grafik](https://user-images.githubusercontent.com/45041403/127736647-eae79ed9-3553-4c2a-a305-8bbb5995327b.png)
 
 I’ bildet die Menge der Nutzenskriterien ab und I” die Menge der Kostenkriterien.
@@ -58,6 +59,7 @@ bestimmt werden.
 Im nächsten Schritt wird der Abstand D der einzelnen Lösungen zur Ideal- und
 Antiideallösung über Formel 3.5 & 3.6 berechnet.
 
+
 ![grafik](https://user-images.githubusercontent.com/45041403/127736767-ac9ed85d-10fd-4efe-b61e-9f2d93d04c21.png)
 
 
@@ -65,6 +67,7 @@ Antiideallösung über Formel 3.5 & 3.6 berechnet.
 Aus den in Formel 3.5 & 3.6 errechneten Abständen kann nun die relative Nähe
 C* über Formel 3.7 errechnet werden. Der Wert der relativen Nähe liegt zwischen
 0 und 1. Eine Lösung ist besser je näher ihr Wert an 1 ist.
+
 
 ![grafik](https://user-images.githubusercontent.com/45041403/127736800-f68d4048-0e05-4374-8d64-6f1244d63b3e.png)
 
