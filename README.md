@@ -143,11 +143,11 @@ linke Grafik zeigt den Zeitraum vom 21.–23. April, die rechte Grafik den Zeitr
 ## Datenstruktur
 Die Simulation benötigt für jeden Haushalt die Dachflächen [m²] und die Ausrichtung der respektiven Dachflächen, sowie ein zeitlich aufgelöstes Lastprofil [kWh] und
 Strahlungsdaten [W/m²] in derselben zeitlichen Auflösung (ist das Lastprofil stündlich müssen auch die Strahlungsdaten stündlich sein). Beim Nutzen von Wetterdaten die nur Horizontale Direktstrahlung und Diffusstrahlung beinhalten muss die geneigte Globalstrahlung zusätzlich berechnet werden. Eine gute Methode liefert [[Klucher, Thomas M.]](#klucher) .
-(Ein Skript zur Umrechnung von Strahlung auf horizontaler zu geneigter Ebene kann ich auf Wunsch bereitstellen.)
-Zur Erstellung von zeitlich aufgelösten Lastprofilen ist der [Load Profile Generator](#https://www.loadprofilegenerator.de/) zu empfehlen.
-Je nach Optimierungskriterium werden weitere Zeitreihen benötigt, für CO²-Reduktion die spezifische CO² Emmission des deutschen Strommix [kg/kWh], für die Berechnung des Grid Support Coefficient nach [[Klein et al.]](#klein) die Börsentstrompreise [€/MWh] und zur Abschätzung des Konfliktpotentials mit Windenergie die Einsman Einsätze mit netzengpassbedingter Abregelung. 
+<br/>
+Zur Erstellung von zeitlich aufgelösten Lastprofilen ist der [Load Profile Generator](#https://www.loadprofilegenerator.de/) zu empfehlen. <br/>
+Je nach Optimierungskriterium werden weitere Zeitreihen benötigt, für CO²-Reduktion die spezifische CO² Emmission des deutschen Strommix [kg/kWh], für die Berechnung des Grid Support Coefficient nach [[Klein et al.]](#klein) die Börsentstrompreise [€/MWh] und zur Abschätzung des Konfliktpotentials mit Windenergie die Einsman Einsätze mit netzengpassbedingter Abregelung. <br/>
 
-Zur Simulation des Stadtquartiers sind anonymisierte Datensätze in den bereitgestellten *csv* Datensätzen vorhanden, sodass die Simulation innerhalb des Repository Out-of-the-box funktionieren sollte. (Pfade müssen angepasst werden)
+Zur Simulation des Stadtquartiers sind anonymisierte Datensätze in den bereitgestellten *csv* Datensätzen vorhanden, sodass die Simulation innerhalb des Repository Out-of-the-box funktionieren sollte. (Pfade müssen angepasst werden)<br/>
 
 Für die reine Batterieauslegung kann die *zeitoptimierte_Simulation.py* verwendet werden.
 
