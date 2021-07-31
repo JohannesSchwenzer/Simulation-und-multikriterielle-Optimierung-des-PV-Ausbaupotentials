@@ -95,6 +95,7 @@ Codeblock 1 simuliert die Interaktion zwischen Energieverbrauch und Energieerzeu
 
 
 ![grafik](https://user-images.githubusercontent.com/45041403/127740816-58aa2ccb-812f-4dbc-bb44-22203eaa318b.png)
+
 **Abb. 2:** *Schematische Darstellung der Simulationsstruktur zur Berechnung der
 Optimierungsparameter in Codeblock 2 und anschließender Evaluation mittels TOPSIS
 Optimierung in Codeblock 3. Über i Zeitschritte und j Dachausnutzungsgrade wird die
@@ -109,10 +110,35 @@ die Ergebnismatrizen für drei der sieben Optimierungsparameter für einen Beisp
 sowie das Ergebnis der TOPSIS Optimierung dargestellt.
 
 ![grafik](https://user-images.githubusercontent.com/45041403/127740147-cd19a616-ea83-4076-95df-24ee9e9e4b7d.png)
+
 **Abb. 3:**  *Simulationsergebnis für Autarkie, CO2-Reduktion und jährliche Rendite,
 sowie TOPSIS Optimum nach Batteriekapazität und PV-Flächenausnutzung für
 einen Beispielhaushalt.*
 
+Sowohl die Werte der optimalen Anlagendimension, als auch die aller Optimierungskriterien, sowie Last- und Einspeisekurven werden aus der Simulation ausgegeben und können visualisiert oder für weitere Optimierungen genutzt werden. Einige Beispieloutputs sind in den folgenden Abbildungen dargestellt.   
+
+![grafik](https://user-images.githubusercontent.com/45041403/127742658-c2906930-0d73-42f1-86a9-7b0b9feef2f7.png)
+
+**Abb. 4:** *Optimale Anlagendimensionen aller Verbraucher im Quartier. Die weißen
+Zahlen innerhalb der Kreissegmente geben die Anzahl der einzelnen Verbraucher an.
+Die Zahlen im Mittelpunkt zeigen die Gesamtsumme und den Durchschnittswert für die
+jeweiligen Verbrauchertypen an.*
+
+![grafik](https://user-images.githubusercontent.com/45041403/127742858-fa91780f-0968-421c-a8c7-0a072bb89f04.png)
+
+**Abb. 5:** *Jährliche PV-Strom Produktion. Der äußere Kreis gibt das Verhältnis
+zwischen Stromproduktion von Einfamilienhäusern (EFH), Mehrfamilienhäusern
+(MFH) und Gewerbe (GW) an. Die weißen Zahlen innerhalb der Kreissegmente geben
+die absolute jährliche Stromgeneration der Verbrauchertypen in kWh an. Die inneren
+Kreissegmente bilden das jeweilige Verhältnis zwischen Eigenverbrauch und Netzeinspeisung
+ab.*
+
+![grafik](https://user-images.githubusercontent.com/45041403/127742893-8a1dfe19-ca98-464e-9f2e-e23d5deff166.png)
+
+**Abb. 6:** *Zeitlich aufgelöste Darstellung von kumulierter PV-Einspeisung und
+kumuliertem Netzbezug im Quartier für jeweils 3 Tage im April und November. Die
+linke Grafik zeigt den Zeitraum vom 21.–23. April, die rechte Grafik den Zeitraum vom
+21.–23. November.*
 
 ## Anwendung
 Zur Simulation verschiedener PV-Ausbaukapazitäten und Speichergrößen, sowie zur Berechnung der Optimalsystemauslegung
