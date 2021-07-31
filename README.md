@@ -3,7 +3,7 @@
 Please note that this project was for my master's thesis at a german civil project, where german was the language used in presenting the results and publications.
 Therefore this repository is in german as well.
 
-Das Repository dient der Evaluierung des Photovoltaikpotentials als integrativer
+Die im Repository enthaltenen Skripte dienen der Evaluierung des Photovoltaikpotentials als integrativer
 Bestandteil des Konzepts zur regenerativen Energieversorgung im Stadtquartier
 Rüsdorfer Kamp, Schleswig Holstein. Untersucht wurde der optimale
 Ausbaugrad im Hinblick auf Netzdienlichkeit, Emmissionsreduktion und wirtschaftlicher
