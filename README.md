@@ -159,7 +159,9 @@ johannes.m.schwenzer@gmail.com
 ## References
 <a name="abcde"> 
 [Behzadian et al.]  Behzadian, Majid, et al. "A state-of the-art survey of TOPSIS applications." Expert Systems with applications 39.17 (2012): 13051-13069. </a>
+
 <a name="klucher"> 
 [Klucher, Thomas M.] Klucher, Thomas M. "Evaluation of models to predict insolation on tilted surfaces." Solar energy 23.2 (1979): 111-114. </a>
+
 <a name="klein"> 
 [Klein et al.]Klein, Konstantin, et al. "Grid support coefficients for electricity-based heating and cooling and field data analysis of present-day installations in Germany." Applied Energy 162 (2016): 853-867. </a>
