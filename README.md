@@ -74,7 +74,19 @@ C* über Formel 3.7 errechnet werden. Der Wert der relativen Nähe liegt zwische
 
 ## Simulation
 
+Zur Veranschaulichung wurde der Simulationscode pro Haushalt in drei Blöcke
+aufgeteilt. Codeblock 1 modelliert die Struktur des Energiesystems und die Interaktion
+zwischen Stromerzeugung und Verbrauch. In Codeblock 2 werden die
+in Block 1 errechneten Output Werte genutzt um die Optimierungsparameter zu berechnen. Die Output Werte aus Codeblock 2
+werden in Form einer m *x* n Matrix ausgegeben und bilden die im Abschnitt Optimierungsalgorithmus
+beschriebene Entscheidungsmatrix. Der dritte Codeblock besteht aus TOPSIS Optimierung und gibt den Wert der
+optimalen Anlagengröße aus. Nachdem Codeblock 3 abgeschlossen ist, werden alle
+Output Werte für den jeweiligen Haushalt gespeichert und das Script beginnt
+erneut bei Codeblock 1 für den nächsten Haushalt bis das gesamte Quartier simuliert
+wurde.
+
 ![grafik](https://user-images.githubusercontent.com/45041403/127740693-8ca350e8-7d81-4531-b9ce-6ed76cc7c313.png)
+
 **Abb. 1:** *Schematische Darstellung der Struktur des modellierten Energiesystems.
 Codeblock 1 simuliert die Interaktion zwischen Energieverbrauch und Energieerzeugung
 über i Zeitschritte und j Dachausnutzungsgrade pro k Batteriekapazitäten je Haushalt .*
@@ -91,10 +103,13 @@ optimale Dachausnutzung und Batteriekapazität nach n Optimierungsparametern aus
 
 
 ## Outputs/Ergebnisse
-*Simulation_und_Optimierung.py* gibt die optimale Ausbaukapazität pro Haushalt, abhängig von den gewählten Optimierungs- und Systemparametern aus.  
+*Simulation_und_Optimierung.py* gibt die optimale Ausbaukapazität pro Haushalt, abhängig von den gewählten Optimierungs- und Systemparametern aus.
+Zur Verdeutlichung der Struktur der Simulationsergebnisse sind in Abbildung 3
+die Ergebnismatrizen für drei der sieben Optimierungsparameter für einen Beispielhaushalt,
+sowie das Ergebnis der TOPSIS Optimierung dargestellt.
 
 ![grafik](https://user-images.githubusercontent.com/45041403/127740147-cd19a616-ea83-4076-95df-24ee9e9e4b7d.png)
-**Abb. 1:**  *Simulationsergebnis für Autarkie, CO2-Reduktion und jährliche Rendite,
+**Abb. 3:**  *Simulationsergebnis für Autarkie, CO2-Reduktion und jährliche Rendite,
 sowie TOPSIS Optimum nach Batteriekapazität und PV-Flächenausnutzung für
 einen Beispielhaushalt.*
 
