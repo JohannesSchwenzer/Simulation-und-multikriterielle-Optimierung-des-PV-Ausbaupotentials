@@ -123,7 +123,7 @@ Sowohl die Werte der optimalen Anlagendimension, als auch die aller Optimierungs
 Zahlen innerhalb der Kreissegmente geben die Anzahl der einzelnen Verbraucher an.
 Die Zahlen im Mittelpunkt zeigen die Gesamtsumme und den Durchschnittswert für die
 jeweiligen Verbrauchertypen an.*
-
+<br/><br/>
 ![grafik](https://user-images.githubusercontent.com/45041403/127742858-fa91780f-0968-421c-a8c7-0a072bb89f04.png)
 
 **Abb. 5:** *Jährliche PV-Strom Produktion. Der äußere Kreis gibt das Verhältnis
@@ -132,14 +132,14 @@ zwischen Stromproduktion von Einfamilienhäusern (EFH), Mehrfamilienhäusern
 die absolute jährliche Stromgeneration der Verbrauchertypen in kWh an. Die inneren
 Kreissegmente bilden das jeweilige Verhältnis zwischen Eigenverbrauch und Netzeinspeisung
 ab.*
-
+<br/><br/>
 ![grafik](https://user-images.githubusercontent.com/45041403/127742893-8a1dfe19-ca98-464e-9f2e-e23d5deff166.png)
 
 **Abb. 6:** *Zeitlich aufgelöste Darstellung von kumulierter PV-Einspeisung und
 kumuliertem Netzbezug im Quartier für jeweils 3 Tage im April und November. Die
 linke Grafik zeigt den Zeitraum vom 21.–23. April, die rechte Grafik den Zeitraum vom
 21.–23. November.*
-
+<br/>
 ## Datenstruktur
 Die Simulation benötigt für jeden Haushalt die Dachflächen [m²] und die Ausrichtung der respektiven Dachflächen, sowie ein zeitlich aufgelöstes Lastprofil [kWh] und
 Strahlungsdaten [W/m²] in derselben zeitlichen Auflösung (ist das Lastprofil stündlich müssen auch die Strahlungsdaten stündlich sein). Beim Nutzen von Wetterdaten die nur Horizontale Direktstrahlung und Diffusstrahlung beinhalten muss die geneigte Globalstrahlung zusätzlich berechnet werden. Eine gute Methode liefert [[Klucher, Thomas M.]](#klucher) .
