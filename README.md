@@ -162,7 +162,7 @@ johannes.m.schwenzer@gmail.com
 
 
 <a name="klucher"> 
-[Klucher, Thomas M.] Klucher, Thomas M. "Evaluation of models to predict insolation on tilted surfaces." Solar energy 23.2 (1979): 111-114.  
+[Klucher, Thomas M.] Klucher, Thomas M. "Evaluation of models to predict insolation on tilted surfaces." Solar energy 23.2 (1979): 111-114.  <br/><br/>
 </a>
 
 <a name="klein"> 
