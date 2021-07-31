@@ -145,9 +145,9 @@ Die Simulation benötigt für jeden Haushalt die Dachflächen [m²] und die Ausr
 Strahlungsdaten [W/m²] in derselben zeitlichen Auflösung (ist das Lastprofil stündlich müssen auch die Strahlungsdaten stündlich sein). Beim Nutzen von Wetterdaten die nur Horizontale Direktstrahlung und Diffusstrahlung beinhalten muss die geneigte Globalstrahlung zusätzlich berechnet werden. Eine gute Methode liefert [[Klucher, Thomas M.]](#klucher) .
 <br/>
 Zur Erstellung von zeitlich aufgelösten Lastprofilen ist der [Load Profile Generator](https://www.loadprofilegenerator.de/) zu empfehlen. <br/>
-Je nach Optimierungskriterium werden weitere Zeitreihen benötigt, für CO²-Reduktion die spezifische CO² Emmission des deutschen Strommix [kg/kWh], für die Berechnung des Grid Support Coefficient nach [[Klein et al.]](#klein) die Börsentstrompreise [€/MWh] und zur Abschätzung des Konfliktpotentials mit Windenergie die Einsman Einsätze mit netzengpassbedingter Abregelung. <br/>
+Je nach Optimierungskriterium werden weitere Zeitreihen benötigt, für CO²-Reduktion die spezifische CO²-Emmission des deutschen Strommix [kg/kWh], für die Berechnung des Grid Support Coefficient nach [[Klein et al.]](#klein) die Börsenstrompreise [€/MWh] und zur Abschätzung des Konfliktpotentials mit Windenergie die Einsman Einsätze mit netzengpassbedingter Abregelung. <br/>
 
-Zur Simulation des Stadtquartiers sind anonymisierte Datensätze in den bereitgestellten *csv* Datensätzen vorhanden, sodass die Simulation innerhalb des Repository Out-of-the-box funktionieren sollte. (Pfade müssen angepasst werden)<br/>
+Zur Simulation des Stadtquartiers sind anonymisierte Datensätze in den bereitgestellten *csv* Dateien vorhanden, sodass die Simulation innerhalb des Repository Out-of-the-box funktionieren sollte. (Pfade müssen angepasst werden)<br/>
 
 Für die reine Batterieauslegung kann die *zeitoptimierte_Simulation.py* verwendet werden.
 
