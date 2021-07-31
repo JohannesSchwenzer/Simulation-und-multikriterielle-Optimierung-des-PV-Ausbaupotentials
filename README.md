@@ -14,13 +14,11 @@ Lösungsansätze untersucht werden.
 
 ## Optimierungsalgorithmus
 
-Als Datengrundlage benötigt die TOPSIS Optimierung eine Entscheidungsmatrix
+Als Grundlage des Optimierungsalgorithmus dient die TOPSIS Methodik (*Technique of Order Preference Similarity to the Ideal Solution*).
+TOPSIS Optimierung nutzt eine Entscheidungsmatrix
 aus den Ergebnissen aller vorhandenen Lösungen und einen Gewichtungsvektor
-der einzelnen Optimierungskriterien. Die Entscheidungsmatrix liefert die in
-Kapitel 4 beschriebene Simulation. Die Wertung der Optimierungskriterien zur
-Erstellung des Gewichtungsvektors ist in Kapitel 3.3 beschrieben. Die Entscheidunsgmatrix
-ist in der Dimension mn, mit m Alternativen und n Bewertungskriterien
-abgebildet. Die generelle Methodik lässt sich in 5 Teilschritte untergliedern.
+der einzelnen Optimierungskriterien. Die generelle Methodik lässt sich in 5 Teilschritte untergliedern.
+Eine detallierte Literatur Review zur TOPSIS Optimierung liefern [[Behzadian et al.]](#abcde)
 
 #### Normalisierung der Entscheidungsmatrix
 
@@ -82,3 +80,9 @@ Die einzelnen Parameter sind erklärt und können angepasst werden.
 Für die reine Batterieauslegung kann die "zeitoptimierte_Simulation" verwendet werden.
 
 Fragen an:  johannes.m.schwenzer@gmail.com oder Johannes.Schwenzer@siamese-pixel.de
+
+
+
+## References
+<a name="abcde"> 
+[Behzadian et al.]  Behzadian, Majid, et al. "A state-of the-art survey of TOPSIS applications." Expert Systems with applications 39.17 (2012): 13051-13069. </a>
