@@ -72,6 +72,31 @@ C* über Formel 3.7 errechnet werden. Der Wert der relativen Nähe liegt zwische
 ![grafik](https://user-images.githubusercontent.com/45041403/127736800-f68d4048-0e05-4374-8d64-6f1244d63b3e.png)
 
 
+## Simulation
+
+![grafik](https://user-images.githubusercontent.com/45041403/127740693-8ca350e8-7d81-4531-b9ce-6ed76cc7c313.png)
+**Abb. 1:** *Schematische Darstellung der Struktur des modellierten Energiesystems.
+Codeblock 1 simuliert die Interaktion zwischen Energieverbrauch und Energieerzeugung
+über i Zeitschritte und j Dachausnutzungsgrade pro k Batteriekapazitäten je Haushalt .*
+
+
+
+
+![grafik](https://user-images.githubusercontent.com/45041403/127740816-58aa2ccb-812f-4dbc-bb44-22203eaa318b.png)
+**Abb. 2:** *Schematische Darstellung der Simulationsstruktur zur Berechnung der
+Optimierungsparameter in Codeblock 2 und anschließender Evaluation mittels TOPSIS
+Optimierung in Codeblock 3. Über i Zeitschritte und j Dachausnutzungsgrade wird die
+optimale Dachausnutzung und Batteriekapazität nach n Optimierungsparametern ausgegeben.*
+
+
+
+## Outputs/Ergebnisse
+*Simulation_und_Optimierung.py* gibt die optimale Ausbaukapazität pro Haushalt, abhängig von den gewählten Optimierungs- und Systemparametern aus.  
+
+![grafik](https://user-images.githubusercontent.com/45041403/127740147-cd19a616-ea83-4076-95df-24ee9e9e4b7d.png)
+**Abb. 1:**  *Simulationsergebnis für Autarkie, CO2-Reduktion und jährliche Rendite,
+sowie TOPSIS Optimum nach Batteriekapazität und PV-Flächenausnutzung für
+einen Beispielhaushalt.*
 
 
 ## Anwendung
