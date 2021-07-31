@@ -158,7 +158,7 @@ johannes.m.schwenzer@gmail.com
 
 ## References
 <a name="abcde"> 
-[Behzadian et al.]  Behzadian, Majid, et al. "A state-of the-art survey of TOPSIS applications." Expert Systems with applications 39.17 (2012): 13051-13069. </a>  
+[Behzadian et al.]  Behzadian, Majid, et al. "A state-of the-art survey of TOPSIS applications." Expert Systems with applications 39.17 (2012): 13051-13069. \ </a>  
 
 
 <a name="klucher"> 
