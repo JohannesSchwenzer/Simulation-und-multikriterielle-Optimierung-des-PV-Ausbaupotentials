@@ -1,5 +1,5 @@
 # Simulation und multikriterielle Optimierung des Photovoltaik Potentials zur Stromversorgung im Quatierskonzept QUARREE 100.
-
+k
 Please note that this project was for my master's thesis at a german civil project, where german was the language used in presenting the results and publications.
 Therefore this repository is in german as well.
 
