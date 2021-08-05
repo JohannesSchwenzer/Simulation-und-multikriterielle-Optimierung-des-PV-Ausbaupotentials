@@ -16,22 +16,22 @@ import time
 
 ####################   Simulationseinstellungen
 
-Simulationsschritte = 10        # paralell simulierte PV Kapazitäten in %
+Simulationsschritte = 10        # paralell simulierte PV Kapazitaeten in %
                                 # Dachausnutzung
                                 
 timesteps =  52560              # simulierte Zeitschritte
-Batteriekapazitäten = 3         # Anzahl simulierter Batteriekapazitäten pro 
-                                # Haushalt in (1 kWh Kapazität/ Schritt)-1
-Batrange = range(Batteriekapazitäten)                                
+Batteriekapazitaeten = 3         # Anzahl simulierter Batteriekapazitaeten pro 
+                                # Haushalt in (1 kWh Kapazitaet/ Schritt)-1
+Batrange = range(Batteriekapazitaeten)                                
 Haushalte =  91                 # Anzahl simulierter Haushalte
 
 ####################   Systemkennwerte etc. 
 n_pv=0.2                        # Modulwirkungsgras
 nsys_pv = 0.85                  # Systemwirkungsgrad
-Startkapazität=0                # Starkapazität Berlin 
+Startkapazitaet=0                # Starkapazitaet Berlin 
 nsys_bat = 0.921                # Batteriewirkungsgrad
-Einspeisevergütung= 0.1075      # in €
-Einspeisevergütung10kw= 0.105        
+Einspeiseverguetung= 0.1075      # in €
+Einspeiseverguetung10kw= 0.105        
 Strompreis_Anbieter= 0.3         
 Strompreis_EEG= 0.273
 co2_Emmission_PV_pro_kWh= 0.04  # in kg/kWh
@@ -45,9 +45,9 @@ df3=pd.read_csv('Dachflaechen.csv',nrows=Haushalte)
 Isued= df['sued']          
 Iost= df['ost']
 Iwest= df['west']
-Kapazität1=df3['Bat']
-Dach=df3['Dach']             # Dachfläche Süd       
-Dachow=df3['Dachow']         # Dachfläche Ost West
+Kapazitaet1=df3['Bat']
+Dach=df3['Dach']             # Dachflaeche Sued       
+Dachow=df3['Dachow']         # Dachflaeche Ost West
 co2reihe=df['co2']           # CO2 Emmissionen Strommix 
 Wind= df['Wind']             # Abregelung Windeinspeisung 
 Preis=df['Strompreis']       # Strompreis
@@ -62,7 +62,7 @@ list=[]
 
 
 # Codeblock 1 - Simulation des Energiesystems: k Haushalte werden nacheinander 
-# über i Zeitschritte mit j Dachausnutzungsgraden simuliert                       
+# ueber i Zeitschritte mit j Dachausnutzungsgraden simuliert                       
                                                                                
 
 for k in range (Haushalte): 
@@ -112,25 +112,25 @@ for k in range (Haushalte):
             elif batein[i,j]>0:
                  batein[i,j]=batein[i,j]
                  
-    for m in range (Batteriekapazitäten):  
-        Kapazität= 1 * m 
+    for m in range (Batteriekapazitaeten):  
+        Kapazitaet= 1 * m 
         batkap=PVgen-Last
         
         for i in range(batkap.shape[0]):
             for j in range(batkap.shape[1]):
             
                     if i in (0,1):
-                     if batein[i,j]+bataus[i,j]+Startkapazität>0 :
+                     if batein[i,j]+bataus[i,j]+Startkapazitaet>0 :
                    
                 
-                        batkap[i,j]=batein[i,j]+bataus[i,j]+Startkapazität    
+                        batkap[i,j]=batein[i,j]+bataus[i,j]+Startkapazitaet    
                      else: batkap[i,j]=0
                 
             
                     else:    
                      if batein[i,j]+bataus[i,j]+batkap[i-1,j]>0 :
-                         if batein[i,j]+bataus[i,j]+batkap[i-1,j]> Kapazität :
-                            batkap[i,j]= Kapazität
+                         if batein[i,j]+bataus[i,j]+batkap[i-1,j]> Kapazitaet :
+                            batkap[i,j]= Kapazitaet
                          else: batkap[i,j]=(batein[i,j]+bataus[i,j])*(1-(1-nsys_bat)/2)+batkap[i-1,j]
                             
                      else:
@@ -169,7 +169,7 @@ for k in range (Haushalte):
                    
             else:    
                 if Netzbezug[i,j] == 0 :
-                   if batkap[i-1,j] == Kapazität :
+                   if batkap[i-1,j] == Kapazitaet :
                      if batein[i,j] < siebzig[j]:
                        Netzeinspeisung[i,j]= batein[i,j]
                      if batein[i,j] > siebzig[j]:  
@@ -189,7 +189,7 @@ for k in range (Haushalte):
         
         # Codeblock 2 - Berechnung der Optimierungsparameter: Aus den Ergebnissen                        
         # von Codeblock 1 werden die 6 Optimierungsparameter Autarkie, Grid Support Coefficient,       
-        # Konfliktfreiheit mit Windeinspeisung, CO² Einsparung, Wirtschaftlichkeit und Zukunftsfähigkeit berechnet.
+        # Konfliktfreiheit mit Windeinspeisung, CO² Einsparung, Wirtschaftlichkeit und Zukunftsfaehigkeit berechnet.
         
         ### CO2 
         
@@ -213,7 +213,7 @@ for k in range (Haushalte):
         co2= np.zeros(shape=(Simulationsschritte))
         
         for i in range(co2.shape[0]):     
-               co2[i]= (np.sum(co2sparung, axis=0)[i]- co2_Emmission_PV_pro_kWh* np.sum(PVgen, axis=0)[i]- Kapazität * 3.75+ np.sum(co2speisung, axis=0)[i])/1000
+               co2[i]= (np.sum(co2sparung, axis=0)[i]- co2_Emmission_PV_pro_kWh* np.sum(PVgen, axis=0)[i]- Kapazitaet * 3.75+ np.sum(co2speisung, axis=0)[i])/1000
         
         
         ### Konflikte mit Windenergie
@@ -255,34 +255,34 @@ for k in range (Haushalte):
         
         Ersparniss= np.zeros(shape=(Simulationsschritte))
         
-        EinspeisevergütungEEG= np.zeros(shape=(Simulationsschritte)) 
-        for i in range(EinspeisevergütungEEG.shape[0]):
+        EinspeiseverguetungEEG= np.zeros(shape=(Simulationsschritte)) 
+        for i in range(EinspeiseverguetungEEG.shape[0]):
              if (i+1 )* (Dach[k]/10+Dachow[k]/10)*0.2 < 10 : 
-                 EinspeisevergütungEEG[i]= Einspeisevergütung
+                 EinspeiseverguetungEEG[i]= Einspeiseverguetung
              else:
-                 EinspeisevergütungEEG[i]= ((((i+1)*(Dach[k]/10+Dachow[k]/10)*0.2)-10)* Einspeisevergütung10kw + 10 * Einspeisevergütung)/((i+1)*(Dach[k]/10+Dachow[k]/10)*0.2)
+                 EinspeiseverguetungEEG[i]= ((((i+1)*(Dach[k]/10+Dachow[k]/10)*0.2)-10)* Einspeiseverguetung10kw + 10 * Einspeiseverguetung)/((i+1)*(Dach[k]/10+Dachow[k]/10)*0.2)
             
         
       
         
         for i in range(Ersparniss.shape[0]):
              if (i+1 )* (Dach[k]/10+Dachow[k]/10)*0.2 < 10 :  
-               Ersparniss[i]= (np.sum(Last, axis=0)[i] -  (np.sum(Netzbezug, axis=0)[i])) *Strompreis_Anbieter + (np.sum(Netzeinspeisung, axis=0)[i]) * EinspeisevergütungEEG[i]
+               Ersparniss[i]= (np.sum(Last, axis=0)[i] -  (np.sum(Netzbezug, axis=0)[i])) *Strompreis_Anbieter + (np.sum(Netzeinspeisung, axis=0)[i]) * EinspeiseverguetungEEG[i]
              else:
-               Ersparniss[i]= (np.sum(Last, axis=0)[i] -  (np.sum(Netzbezug, axis=0)[i])) *Strompreis_EEG + (np.sum(Netzeinspeisung, axis=0)[i]) * EinspeisevergütungEEG[i]  
+               Ersparniss[i]= (np.sum(Last, axis=0)[i] -  (np.sum(Netzbezug, axis=0)[i])) *Strompreis_EEG + (np.sum(Netzeinspeisung, axis=0)[i]) * EinspeiseverguetungEEG[i]  
         ##
     
         Installationskosten = np.zeros(shape=(1,Simulationsschritte))
         for i in range(1):
            for j in range(Simulationsschritte):
              if (j+1 )* (Dach[k]/10+Dachow[k]/10)*0.2 < 4 :  
-               Installationskosten[i,j]= (j+1)*350 * (Dach[k]/10 +  Dachow[k]/10)  + Kapazität*700             
+               Installationskosten[i,j]= (j+1)*350 * (Dach[k]/10 +  Dachow[k]/10)  + Kapazitaet*700             
              if 4 <= (j+1 )* (Dach[k]/10+Dachow[k]/10)*0.2 < 6 :
-              Installationskosten[i,j]= (j+1)*330 * (Dach[k]/10 + Dachow[k]/10)  + Kapazität*700
+              Installationskosten[i,j]= (j+1)*330 * (Dach[k]/10 + Dachow[k]/10)  + Kapazitaet*700
              if 6 <= (j+1 )* (Dach[k]/10+Dachow[k]/10)*0.2 <= 10 :
-              Installationskosten[i,j]= (j+1)*310 * (Dach[k]/10 +  Dachow[k]/10)  + Kapazität*700 
+              Installationskosten[i,j]= (j+1)*310 * (Dach[k]/10 +  Dachow[k]/10)  + Kapazitaet*700 
              if (j+1 )* (Dach[k]/10+Dachow[k]/10)*0.2 > 10 :
-              Installationskosten[i,j]= (j+1)*280 * (Dach[k]/10 +  Dachow[k]/10)  + Kapazität*700 
+              Installationskosten[i,j]= (j+1)*280 * (Dach[k]/10 +  Dachow[k]/10)  + Kapazitaet*700 
                
         Installationskosten20 = np.zeros(shape=(1,Simulationsschritte))
         for i in range(1):
@@ -312,7 +312,7 @@ for k in range (Haushalte):
                   
         
         
-        ### Zukunftsfähigkeit
+        ### Zukunftsfaehigkeit
         
         zukunft= np.zeros(shape=(Simulationsschritte))            
         for i in range(zukunft.shape[0]):
@@ -324,11 +324,11 @@ for k in range (Haushalte):
         print('****                 Ergebnisse                  ****        ')
         print(' ')
         print('Haushalt                  ', (k+1))
-        print('PV Fläche in m²           ', Dachausnutzung_sqm )
-        print('Kapazität                 ', Kapazität )
+        print('PV Flaeche in m²           ', Dachausnutzung_sqm )
+        print('Kapazitaet                 ', Kapazitaet )
         print('Autarkiegrad in %         ',np.around(Aut, decimals=2))    
         print('CO2 Einsparung [t/a]:     ',np.around(co2, decimals=2))
-        print('jährl. Rendite            ',np.around(anual, decimals=2))
+        print('jaehrl. Rendite            ',np.around(anual, decimals=2))
         print('Grid support coefficient  ',GSC )
         print('Konfliktfreiheit Wind     ',Konflikt_sum )        
        ######################################################################

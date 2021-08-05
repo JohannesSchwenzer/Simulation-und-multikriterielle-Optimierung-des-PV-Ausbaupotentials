@@ -19,7 +19,7 @@ from pathlib import Path
 
 timesteps=52560
 Haushalte =  91
-Batrange = range(6)           # Anzahl simulierter Batteriekapazitäten in kWh-1
+Batrange = range(6)           # Anzahl simulierter Batteriekapazitaeten in kWh-1
 
 
 df=pd.read_csv('QuartierHH.csv',nrows=timesteps)
@@ -28,11 +28,11 @@ df3=pd.read_csv('Dachflaechen.csv',nrows=Haushalte)
 ####################
 n_pv=0.2                
 nsys_pv = 0.85            
-Startkapazität=0
+Startkapazitaet=0
 nsys_bat = 0.921
 ##################
-Einspeisevergütung= 0.1075        #in €
-Einspeisevergütung10kw= 0.105        
+Einspeiseverguetung= 0.1075        #in €
+Einspeiseverguetung10kw= 0.105        
 Strompreis_Anbieter= 0.3 
 Strompreis_EEG= 0.273
 ###################
@@ -44,12 +44,12 @@ Isued= df['sued']
 Iost= df['ost']
 Iwest= df['west']
 ####################
-Dach=df3['Dach']             #Dach Süd       
+Dach=df3['Dach']             #Dach Sued       
 Dachow=df3['Dachow']         #Dach Ost West
 co2reihe=df['co2']
 Wind= df['Wind']             #Abregelung Windeinspeisung 
 Preis=df['Strompreis']
-Kapazität1=df3['Bat']
+Kapazitaet1=df3['Bat']
 ##################
 
 
@@ -81,7 +81,7 @@ class cl1():
    self.zukunft=np.sum(self.PVgen)
    self.Last= Lastfct(k)  
    self.siebzig= Dach[k]+ Dachow[k]*n_pv *0.7 
-   self.Kapazität= Kapazität1[k]
+   self.Kapazitaet= Kapazitaet1[k]
    self.Anlage = (Dach[k]+Dachow[k])*0.2
    self.preisavg= np.sum(Preis)/timesteps
 class cl2:
@@ -95,8 +95,8 @@ class cl3:
    for i in range(timesteps):
   
     if p2.batein[i]+p2.bataus[i]+self.batkap[i-1]>0 :
-        if p2.batein[i]+p2.bataus[i]+self.batkap[i-1]> Kapazität :
-                    self.batkap[i]= Kapazität
+        if p2.batein[i]+p2.bataus[i]+self.batkap[i-1]> Kapazitaet :
+                    self.batkap[i]= Kapazitaet
         else: self.batkap[i]=(p2.batein[i]+p2.bataus[i])*(1-(1-nsys_bat)/2)+self.batkap[i-1]
                     
     else:
@@ -116,7 +116,7 @@ class cl4:
       self.Netzeinspeisung= np.zeros(shape=(timesteps))      
       for i in range(timesteps):        
         if self.Netzbezug[i] == 0 :
-           if p3.batkap[i-1] == Kapazität :
+           if p3.batkap[i-1] == Kapazitaet :
              if p2.batein[i] < p1.siebzig:
                self.Netzeinspeisung[i]= p2.batein[i]
              if p2.batein[i] > p1.siebzig:  
@@ -132,7 +132,7 @@ class co2calc:
   def __init__(self,k):  
      self.co2sparung=[(p1.Last[i] - p4.Netzbezug[i])*co2reihe[i] for i in range (timesteps)]
      self.co2speisung= [p4.Netzeinspeisung[i]*co2reihe[i] if p4.Netzeinspeisung[i] > 0 and Wind[i] < 1 else 0 for i in range (timesteps)] 
-     self.co2=(np.sum(self.co2sparung)+np.sum(self.co2speisung)- co2_Emmission_PV_pro_kWh* np.sum(p1.PVgen)- Kapazität * 3.75)/1000 
+     self.co2=(np.sum(self.co2sparung)+np.sum(self.co2speisung)- co2_Emmission_PV_pro_kWh* np.sum(p1.PVgen)- Kapazitaet * 3.75)/1000 
 
 
 class Konfliktcalc:
@@ -144,20 +144,20 @@ class Konfliktcalc:
 class Renditecalc:
  def __init__(self,k):
     if p1.Anlage  < 10 : 
-        self.EinspeisevergütungEEG= Einspeisevergütung
-        self.Ersparniss= (np.sum(p1.Last) -  np.sum(p4.Netzbezug)) *Strompreis_Anbieter + np.sum(p4.Netzeinspeisung) * self.EinspeisevergütungEEG
+        self.EinspeiseverguetungEEG= Einspeiseverguetung
+        self.Ersparniss= (np.sum(p1.Last) -  np.sum(p4.Netzbezug)) *Strompreis_Anbieter + np.sum(p4.Netzeinspeisung) * self.EinspeiseverguetungEEG
     else:
-        self.EinspeisevergütungEEG= ((p1.Anlage-10)* Einspeisevergütung10kw + 10 * Einspeisevergütung)/(p1.Anlage)
-        self.Ersparniss= (np.sum(p1.Last) - np.sum(p4.Netzbezug)) *Strompreis_EEG + np.sum(p4.Netzeinspeisung) * self.EinspeisevergütungEEG  
+        self.EinspeiseverguetungEEG= ((p1.Anlage-10)* Einspeiseverguetung10kw + 10 * Einspeiseverguetung)/(p1.Anlage)
+        self.Ersparniss= (np.sum(p1.Last) - np.sum(p4.Netzbezug)) *Strompreis_EEG + np.sum(p4.Netzeinspeisung) * self.EinspeiseverguetungEEG  
 
     if p1.Anlage < 4 :  
-        self.Installationskosten= 1750 * p1.Anlage + Kapazität*700             
+        self.Installationskosten= 1750 * p1.Anlage + Kapazitaet*700             
     elif 4 <= p1.Anlage < 6 :
-        self.Installationskosten= 1650 * p1.Anlage + Kapazität*700
+        self.Installationskosten= 1650 * p1.Anlage + Kapazitaet*700
     elif 6 <= p1.Anlage <= 10 :
-        self.Installationskosten= 1550 * p1.Anlage + Kapazität*700 
+        self.Installationskosten= 1550 * p1.Anlage + Kapazitaet*700 
     else :
-        self.Installationskosten= 1400 * p1.Anlage + Kapazität*700 
+        self.Installationskosten= 1400 * p1.Anlage + Kapazitaet*700 
     
 
     if p1.Anlage < 8 :
@@ -194,7 +194,7 @@ for k in range (Haushalte):
   matgsc = pd.DataFrame()
   matzukunft = pd.DataFrame()
   for m in Batrange:
-     Kapazität = m * 1   
+     Kapazitaet = m * 1   
        
 
      p3 = cl3(k)
@@ -205,7 +205,7 @@ for k in range (Haushalte):
      paut= Autcalc(k)
      pgsc= GSCcalc(k)
      print('anlage:',np.around(p1.Anlage,decimals=2) , 'kWp')
-     print('Kapazität:',Kapazität, 'kWh')
+     print('Kapazitaet:',Kapazitaet, 'kWh')
      print('co2:   ',np.around(np.sum(pco.co2),decimals=2),  't/a')
      print('wind:  ',pwind.Konflikt_sum , 'konfliktfreie Zeitpunkte')
      print('Rendite:',np.around(panual.anual,decimals=3), '%/a')
@@ -239,7 +239,7 @@ for k in range (Haushalte):
           min2=nonIdeal['zukunft']
           relDist=min2/(max3+min2) 
           final=relDist.idxmax()
-          print('Optimale Batteriekapazität:',final, 'kWh')
+          print('Optimale Batteriekapazitaet:',final, 'kWh')
           
 
 
